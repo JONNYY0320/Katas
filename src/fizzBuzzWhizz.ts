@@ -72,3 +72,21 @@ export const gameWithWhizz = (input: number): number | string => {
   }
   return result;
 };
+
+// Rango: devuelve los resultados de game para todos los números del 1 hasta n
+export const fizzBuzzHasta = (n: number): (number | string)[] => {
+  const resultados: (number | string)[] = [];
+  for (let i = 1; i <= n; i++) {
+    resultados.push(game(i));
+  }
+  return resultados;
+};
+
+// Rango con bonus: devuelve los resultados de gameWithWhizz del 1 hasta n
+export const fizzBuzzWhizzHasta = (n: number): (number | string)[] => {
+  const resultados: (number | string)[] = [];
+  for (let i = 1; i <= n; i++) {
+    resultados.push(gameWithWhizz(i));
+  }
+  return resultados;
+};

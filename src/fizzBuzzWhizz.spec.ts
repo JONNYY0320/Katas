@@ -1,5 +1,5 @@
 import { describe, test, expect } from "@jest/globals";
-import { game, gameWithWhizz } from "./fizzBuzzWhizz";
+import { game, gameWithWhizz, fizzBuzzHasta, fizzBuzzWhizzHasta } from "./fizzBuzzWhizz";
 
 describe('FizzBuzz Game', () => {
   test('should works', () => {
@@ -72,5 +72,58 @@ describe('FizzBuzzWhizz Game (bonus)', () => {
   test('should works 5', () => {
     const result = gameWithWhizz(5);
     expect(result).toEqual('BuzzWhizz');
+  });
+});
+
+describe('FizzBuzz Game con rango (del 1 al 10)', () => {
+  const rango = 10;
+  const esperados = [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz'];
+
+  for (let i = 1; i <= rango; i++) {
+    test(`should works ${i}`, () => {
+      const result = game(i);
+      expect(result).toEqual(esperados[i - 1]);
+    });
+  }
+
+  test('should works with the whole range', () => {
+    const result = fizzBuzzHasta(rango);
+    expect(result).toEqual(esperados);
+  });
+});
+
+describe('FizzBuzzWhizz Game con rango (del 1 al 10)', () => {
+  const rango = 10;
+  const esperados = [1, 'Whizz', 'FizzWhizz', 4, 'BuzzWhizz', 'Fizz', 'Whizz', 8, 'Fizz', 'Buzz'];
+
+  for (let i = 1; i <= rango; i++) {
+    test(`should works ${i}`, () => {
+      const result = gameWithWhizz(i);
+      expect(result).toEqual(esperados[i - 1]);
+    });
+  }
+
+  test('should works with the whole range', () => {
+    const result = fizzBuzzWhizzHasta(rango);
+    expect(result).toEqual(esperados);
+  });
+});
+
+describe('FizzBuzz Game con cualquier número', () => {
+  test('should works 99', () => {
+    const result = game(99);
+    expect(result).toEqual('Fizz');
+  });
+  test('should works 98', () => {
+    const result = game(98);
+    expect(result).toEqual(98);
+  });
+  test('should works 1000', () => {
+    const result = game(1000);
+    expect(result).toEqual('Buzz');
+  });
+  test('should works 3000', () => {
+    const result = game(3000);
+    expect(result).toEqual('FizzBuzz');
   });
 });

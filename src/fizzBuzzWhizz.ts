@@ -26,4 +26,49 @@ Add the following new rule, if a number is prime return Whizz. Only worry about 
   4      4
   5      BuzzWhizz
  */
-export const game = (input: number) => input;
+
+
+// Ejercicio principal: Fizz, Buzz y FizzBuzz
+export const game = (input: number): number | string => {
+  if (input % 3 === 0 && input % 5 === 0) {
+    return "FizzBuzz";
+  }
+  if (input % 3 === 0) {
+    return "Fizz";
+  }
+  if (input % 5 === 0) {
+    return "Buzz";
+  }
+  return input;
+};
+
+// Revisa si un número es primo (solo se divide para 1 y para sí mismo)
+export const isPrime = (input: number): boolean => {
+  if (input < 2) {
+    return false;
+  }
+  for (let i = 2; i < input; i++) {
+    if (input % i === 0) {
+      return false;
+    }
+  }
+  return true;
+};
+
+// Bonus: además de Fizz y Buzz, agrega Whizz si el número es primo
+export const gameWithWhizz = (input: number): number | string => {
+  let result = "";
+  if (input % 3 === 0) {
+    result = result + "Fizz";
+  }
+  if (input % 5 === 0) {
+    result = result + "Buzz";
+  }
+  if (isPrime(input)) {
+    result = result + "Whizz";
+  }
+  if (result === "") {
+    return input;
+  }
+  return result;
+};
